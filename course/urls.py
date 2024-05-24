@@ -6,8 +6,10 @@ from .views import CourseViewSet
 app_name = CourseConfig.name
 
 router = DefaultRouter()
-router.register(r'courses', CourseViewSet, basename='courses')
+router.register('', CourseViewSet, basename='course')
 
 urlpatterns = [
 
-] + router.urls
+]
+
+urlpatterns += router.urls
