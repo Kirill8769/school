@@ -1,0 +1,32 @@
+[
+{
+    "model": "lesson.lesson",
+    "pk": 1,
+    "fields": {
+        "title": "django drf",
+        "description": "django drf",
+        "preview": "",
+        "url": null
+    }
+},
+{
+    "model": "lesson.lesson",
+    "pk": 2,
+    "fields": {
+        "title": "django",
+        "description": "django",
+        "preview": "",
+        "url": null
+    }
+},
+{
+    "model": "lesson.lesson",
+    "pk": 3,
+    "fields": {
+        "title": "Математика",
+        "description": "Математика",
+        "preview": "",
+        "url": null
+    }
+}
+]
