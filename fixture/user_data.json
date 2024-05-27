@@ -1,0 +1,22 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "password": "12345",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "Ученик",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-05-26T12:39:32Z",
+        "email": "mail@gmail.com",
+        "phone": null,
+        "city": null,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

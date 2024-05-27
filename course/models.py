@@ -9,7 +9,9 @@ class Course(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название', help_text='Название курса')
     preview = models.ImageField(upload_to='course/', verbose_name='Превью', help_text='Загрузите превью', **NULLABLE)
     description = models.TextField(verbose_name='Описание', help_text='Введите описание')
-    lessons = models.ManyToManyField(Lesson, verbose_name='Уроки', help_text='Выберите уроки', **NULLABLE)
+    lessons = models.ManyToManyField(
+        Lesson, verbose_name='Уроки', help_text='Выберите уроки', blank=True, related_name='lessons'
+    )
 
     def __str__(self):
         return self.title
