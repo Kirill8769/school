@@ -1,5 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, generics
+from rest_framework.permissions import AllowAny
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .models import Payment, User
 from .serializers import PaymentSerializer, UserSerializer
@@ -20,6 +22,11 @@ class UserListAPIView(generics.ListAPIView):
 
 class UserCreateAPIView(generics.CreateAPIView):
     serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
+
+class TokenCreateView(TokenObtainPairView):
+    permission_classes = [AllowAny]
 
 
 class UserRetrieveAPIView(generics.RetrieveAPIView):
