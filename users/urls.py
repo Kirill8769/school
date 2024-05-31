@@ -1,4 +1,5 @@
 from django.urls import path
+from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from .apps import UsersConfig
@@ -13,6 +14,6 @@ urlpatterns = [
     path('update/<int:pk>/', views.UserUpdateAPIView.as_view(), name='user_update'),
     path('delete/<int:pk>/', views.UserDestroyAPIView.as_view(), name='user_delete'),
     path('token/', views.TokenCreateView.as_view(), name='token_create'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('token/refresh/', TokenRefreshView.as_view(permission_classes=[AllowAny]), name='token_refresh'),
     path('payments/', views.PaymentListAPIView.as_view(), name='payment_list')
 ]

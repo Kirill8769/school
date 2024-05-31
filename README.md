@@ -46,6 +46,7 @@ python manage.py loaddata fixture/user_data.json
 python manage.py loaddata fixture/lesson_data.json
 python manage.py loaddata fixture/course_data.json
 python manage.py loaddata fixture/payment_data.json
+python manage.py loaddata fixture/group_data.json
 ```
 
 ## Запуск программы

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 from lesson.models import Lesson
@@ -12,6 +13,7 @@ class Course(models.Model):
     lessons = models.ManyToManyField(
         Lesson, verbose_name='Уроки', help_text='Выберите уроки', blank=True, related_name='lessons'
     )
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, verbose_name='Владелец', **NULLABLE)
 
     def __str__(self):
         return self.title
