@@ -39,5 +39,3 @@ class SubscriptionTestCase(APITestCase):
         course_data = course_response.json()
         self.assertEqual(course_response.status_code, status.HTTP_200_OK)
         self.assertFalse(course_data['is_subscribe'])
-
-
