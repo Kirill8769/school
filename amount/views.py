@@ -1,7 +1,9 @@
+from django.views.generic import TemplateView
 from rest_framework import generics
 
 from .models import Amount
 from .serializers import AmountSerializer
+from .services import create_stripe_price, create_stripe_session
 
 
 class AmountListAPIView(generics.ListAPIView):
@@ -14,8 +16,10 @@ class AmountCreateAPIView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         amount = serializer.save()
-        amount.session_id = 'session_id_11'
-        amount.link = 'link_1234124'
+        price = create_stripe_price(amount=amount.amount, course=amount.course)
+        session = create_stripe_session(price=price)
+        amount.session_id = session.get('id')
+        amount.link = session.get('url')
         amount.save()
 
 
@@ -32,3 +36,7 @@ class AmountRetrieveAPIView(generics.RetrieveAPIView):
 class AmountDestroyAPIView(generics.DestroyAPIView):
     serializer_class = AmountSerializer
     queryset = Amount.objects.all()
+
+
+class SuccessTemplateView(TemplateView):
+    template_name = 'amount/success.html'
