@@ -21,6 +21,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('amounts/', include('amount.urls', namespace='amounts')),
     path('courses/', include('course.urls', namespace='courses')),
     path('lessons/', include('lesson.urls', namespace='lessons')),
     path('subscriptions/', include('subscription.urls', namespace='subscriptions')),
