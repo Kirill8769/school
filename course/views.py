@@ -2,12 +2,14 @@ from rest_framework import viewsets
 
 from users.permissions import IsModerator, IsOwner
 from .models import Course
+from .paginators import CoursePagination
 from .serializers import CourseSerializer
 
 
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+    pagination_class = CoursePagination
 
     def perform_create(self, serializer):
         course = serializer.save(owner=self.request.user)

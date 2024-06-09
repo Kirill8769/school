@@ -2,12 +2,14 @@ from rest_framework import generics
 
 from users.permissions import IsModerator, IsOwner
 from .models import Lesson
+from .paginators import LessonPagination
 from .serializers import LessonSerializer
 
 
 class LessonListAPIView(generics.ListAPIView):
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    pagination_class = LessonPagination
 
     def get_queryset(self):
         user = self.request.user
