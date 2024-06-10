@@ -11,4 +11,5 @@ urlpatterns = [
     path('detail/<int:pk>/', views.AmountRetrieveAPIView.as_view(), name='amount_detail'),
     path('update/<int:pk>/', views.AmountUpdateAPIView.as_view(), name='amount_update'),
     path('delete/<int:pk>/', views.AmountDestroyAPIView.as_view(), name='amount_delete'),
+    path('success/', views.SuccessTemplateView.as_view(), name='success'),
 ]

@@ -2,6 +2,7 @@ from rest_framework.exceptions import ValidationError
 
 
 class UrlValidator:
+    """Проверяет что бы ссылка на материал была только на youtube."""
 
     def __init__(self, field):
         self.field = field
