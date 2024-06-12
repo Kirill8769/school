@@ -1,9 +1,15 @@
+import asyncio
+
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 
+from subscription.models import Subscription
+from users.models import User
 from users.permissions import IsModerator, IsOwner
 from .models import Course
 from .paginators import CoursePagination
 from .serializers import CourseSerializer
+from .tasks import send_course_changes
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -14,6 +20,19 @@ class CourseViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         course = serializer.save(owner=self.request.user)
         course.save()
+
+    def perform_update(self, serializer):
+        course = serializer.save(owner=self.request.user)
+        course.save()
+        if self.action in ['update', 'partial_update']:
+            subscriptions = Subscription.objects.filter(course=course)
+            if subscriptions:
+                for subscription in subscriptions:
+                    asyncio.run(send_course_changes(
+                        subject=f'Курс {course.title} был обновлён',
+                        message='Информация в материалах курса была обновлена, пожалуйста ознакомьтесь с изменениями.',
+                        email=subscription.user.email,
+                    ))
 
     def get_queryset(self):
         user = self.request.user
