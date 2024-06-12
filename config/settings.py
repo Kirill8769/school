@@ -130,8 +130,8 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 CELERY_BEAT_SCHEDULE = {
-    'task_name': {
-        'task': 'task_name',
+    'check_users': {
+        'task': 'users.tasks.check_users',
         'schedule': timedelta(days=1),
     },
 }

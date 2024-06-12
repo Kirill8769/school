@@ -28,11 +28,11 @@ class CourseViewSet(viewsets.ModelViewSet):
             subscriptions = Subscription.objects.filter(course=course)
             if subscriptions:
                 for subscription in subscriptions:
-                    asyncio.run(send_course_changes(
+                    send_course_changes.delay(
                         subject=f'Курс {course.title} был обновлён',
                         message='Информация в материалах курса была обновлена, пожалуйста ознакомьтесь с изменениями.',
                         email=subscription.user.email,
-                    ))
+                    )
 
     def get_queryset(self):
         user = self.request.user
