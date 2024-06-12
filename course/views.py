@@ -1,11 +1,8 @@
-import asyncio
-
-from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 
 from subscription.models import Subscription
-from users.models import User
 from users.permissions import IsModerator, IsOwner
+
 from .models import Course
 from .paginators import CoursePagination
 from .serializers import CourseSerializer

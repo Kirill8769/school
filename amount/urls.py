@@ -1,7 +1,8 @@
 from django.urls import path
 
-from .apps import AmountConfig
 from amount import views
+
+from .apps import AmountConfig
 
 app_name = AmountConfig.name
 

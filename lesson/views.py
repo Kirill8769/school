@@ -1,6 +1,7 @@
 from rest_framework import generics
 
 from users.permissions import IsModerator, IsOwner
+
 from .models import Lesson
 from .paginators import LessonPagination
 from .serializers import LessonSerializer

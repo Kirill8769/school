@@ -1,7 +1,8 @@
 from django.urls import path
 
-from .apps import LessonConfig
 from lesson import views
+
+from .apps import LessonConfig
 
 app_name = LessonConfig.name
 
