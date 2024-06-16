@@ -1,0 +1,25 @@
+[
+{
+    "model": "course.course",
+    "pk": 1,
+    "fields": {
+        "title": "programmer",
+        "preview": "",
+        "description": "lessons python",
+        "lessons": []
+    }
+},
+{
+    "model": "course.course",
+    "pk": 2,
+    "fields": {
+        "title": "Разработчик python",
+        "preview": "",
+        "description": "Разработчик python",
+        "lessons": [
+            1,
+            2
+        ]
+    }
+}
+]
